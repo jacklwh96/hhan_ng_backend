@@ -21,7 +21,7 @@ jobs:
       with:
         java-version: 1.11
     - name: Build with Maven
-      run: mvn -B package --file HelloWorldFunction/pom.xml
+      run: mvn test --file HelloWorldFunction/pom.xml
 
    # - name: Code Inspector GitHub action
    #   uses: codeinspectorio/github-action@v1
