@@ -22,3 +22,47 @@ jobs:
         java-version: 1.11
     - name: Build with Maven
       run: mvn -B package --file HelloWorldFunction/pom.xml
+
+    - name: CircleCI Workflow API Trigger
+    # You may pin to the exact commit or the version.
+    # uses: promiseofcake/circleci-trigger-action@d8fd7a836fde6b167fc6ac6bf330c77bb20b0005
+      uses: promiseofcake/circleci-trigger-action@v1.0
+      with:
+      # CircleCI project slug, ie. the repo name: promiseofcake/circleci-trigger-action
+      project-slug:
+      # CircleCI User Token used to authorize the workflow run
+      user-token:
+      # Branch for the CircleCU contextual run.
+      branch:
+      # Payload data (JSON) to send to the Workflow endpoint
+      payload:
+
+    - name: Code Inspector GitHub action
+      # You may pin to the exact commit or the version.
+      # uses: codeinspectorio/github-action@01c818be303e2c4bcec991ca1c51feab753a1e2a
+      uses: codeinspectorio/github-action@v1
+      with:
+        # Token to checkout the repository.
+        repo_token:
+        # Access key on Code Inspector
+        code_inspector_access_key:
+        # Secret key on Code Inspector
+        code_inspector_secret_key:
+        # Minimum grade. Valid options are EXCELLENT, GOOD, NEUTRAL, WARNING, CRITICAL. Leave blank to ignore.
+        min_quality_grade:   80 # default is
+        # Minimum quality score from 0 (worst) to 100 (best)
+
+        min_quality_score:   80 # default is 0
+        # Maximum defect rate per line of code (e.g. 0.01 for 1 defect per 100 lines of code). Leave 0 to ignore.
+
+        max_defects_rate: 0 # default is 0
+        # Maximum number of complex functions rate (e.g. number of complex functions / number of functions). Leave 0 to ignore.
+
+        max_complex_functions_rate: 1 # default is 0
+        # Maximum number of long functions rate (e.g. number of long functions / number of functions). Leave 0 to ignore.
+
+        max_long_functions_rate: 1 # default is 0
+        # Project on code inspector. Will use the preferences of this analysis. Leave blank and no preferences are used
+        project_name: hhan_ng_backend
+        # Timeout before giving up (in case analysis takes too long). Default is 10 minutes
+        max_timeout_sec: 600
