@@ -26,4 +26,5 @@ jobs:
    # - name: Code Inspector GitHub action
    #   uses: codeinspectorio/github-action@v1
     - name: SonarCloud Scan
-    -   uses: SonarSource/sonarcloud-github-action@v1.4
+        uses: SonarSource/sonarcloud-github-action@v1.4
+        SONAR_TOKEN
