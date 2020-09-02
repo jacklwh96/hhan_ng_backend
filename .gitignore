@@ -25,3 +25,6 @@ hs_err_pid*
 /target
 ./aws
 .DS_Store
+/HelloWorldFunction/HelloWorld.iml
+HelloWorld.iml
+
