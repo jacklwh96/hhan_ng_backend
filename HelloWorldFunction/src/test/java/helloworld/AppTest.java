@@ -28,4 +28,10 @@ public class AppTest {
     }
   }
 
+  @Test
+  public void testAStaticMethodBecauseWeCan() {
+      String something = App.getSomething();
+      assertNotNull("Something exists", something)
+    }
+  }
 }
