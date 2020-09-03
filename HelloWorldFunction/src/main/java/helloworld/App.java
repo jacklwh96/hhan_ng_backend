@@ -18,7 +18,9 @@ import java.util.stream.Collectors;
  */
 public class App implements RequestHandler<APIGatewayProxyRequestEvent, APIGatewayProxyResponseEvent> {
 
-    public static String getSomething() { return "Spencer";}
+    final private static String name = "Spencer";
+
+    public static String getSomething() { return name;}
 
     public APIGatewayProxyResponseEvent handleRequest(final APIGatewayProxyRequestEvent input, final Context context) {
         Map<String, String> headers = new HashMap<>();
