@@ -15,6 +15,7 @@ import java.util.stream.Collectors;
 
 /**
  * Handler for requests to Lambda function.
+ * hrfe i a comment
  */
 public class App implements RequestHandler<APIGatewayProxyRequestEvent, APIGatewayProxyResponseEvent> {
 
@@ -51,6 +52,11 @@ public class App implements RequestHandler<APIGatewayProxyRequestEvent, APIGatew
     }
 
     private String getPageContents(String address) throws IOException{
+        List<Integer> myList  =  new ArrayList<Integer>;
+        for (int count = 0; count <= 3; count++) {
+            myList.add(count);
+        }
+
         URL url = new URL(address);
         try(BufferedReader br = new BufferedReader(new InputStreamReader(url.openStream()))) {
             return br.lines().collect(Collectors.joining(System.lineSeparator()));
