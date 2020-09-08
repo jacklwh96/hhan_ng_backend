@@ -19,14 +19,16 @@ import java.util.stream.Collectors;
  * Handler for requests to Lambda function.
  * hrfe i a comment
  */
-public class App implements RequestHandler<APIGatewayProxyRequestEvent, APIGatewayProxyResponseEvent> {
+public class App implements RequestHandler <APIGatewayProxyRequestEvent, APIGatewayProxyResponseEvent> {
 
     final private static String name = "Spencer";
 
-    public static String getSomething() { return name;}
+    public static String getSomething() {
+        return name;
+    }
 
     public APIGatewayProxyResponseEvent handleRequest(final APIGatewayProxyRequestEvent input, final Context context) {
-        Map<String, String> headers = new HashMap<>();
+        Map <String, String> headers = new HashMap <>();
         headers.put("Content-Type", "application/json");
         headers.put("X-Custom-Header", "application/json");
 
@@ -46,28 +48,15 @@ public class App implements RequestHandler<APIGatewayProxyRequestEvent, APIGatew
         }
     }
 
-    private String breakCodeCoverageWorse(String address) throws IOException{
-        URL url = new URL(address);
-        try(BufferedReader br = new BufferedReader(new InputStreamReader(url.openStream()))) {
-            return br.lines().collect(Collectors.joining(System.lineSeparator()));
-        }
-    }
 
-    private String foobart(String address) throws IOException{
-        URL url = new URL(address);
-        try(BufferedReader br = new BufferedReader(new InputStreamReader(url.openStream()))) {
-            return br.lines().collect(Collectors.joining(System.lineSeparator()));
-        }
-    }
-
-    private String getPageContents(String address) throws IOException{
-        List <Integer> myList  =  new ArrayList <Integer>();
+    private String getPageContents(String address) throws IOException {
+        List <Integer> myList = new ArrayList <Integer>();
         for (int count = 0; count <= 3; count++) {
             myList.add(count);
         }
 
         URL url = new URL(address);
-        try(BufferedReader br = new BufferedReader(new InputStreamReader(url.openStream()))) {
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(url.openStream()))) {
             return br.lines().collect(Collectors.joining(System.lineSeparator()));
         }
     }
