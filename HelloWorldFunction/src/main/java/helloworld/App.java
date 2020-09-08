@@ -17,6 +17,7 @@ import java.util.stream.Collectors;
 
 /**
  * Handler for requests to Lambda function.
+ * hrfe i a comment
  */
 public class App implements RequestHandler<APIGatewayProxyRequestEvent, APIGatewayProxyResponseEvent> {
 
@@ -24,11 +25,11 @@ public class App implements RequestHandler<APIGatewayProxyRequestEvent, APIGatew
 
     public static String getSomething() { return name;}
 
-    public APIGatewayProxyResponseEvent handleRequest(final APIGatewayProxyRequestEvent input, final Context context) throws IOException {
+    public APIGatewayProxyResponseEvent handleRequest(final APIGatewayProxyRequestEvent input, final Context context) {
         Map<String, String> headers = new HashMap<>();
         headers.put("Content-Type", "application/json");
         headers.put("X-Custom-Header", "application/json");
-        foobart(null);
+
         APIGatewayProxyResponseEvent response = new APIGatewayProxyResponseEvent()
                 .withHeaders(headers);
         try {
