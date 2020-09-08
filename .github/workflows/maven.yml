@@ -25,11 +25,6 @@ jobs:
         token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
 
     - name: codacy-coverage-reporter
-
-    on: [ "push" ]
-
-    jobs:
-      codacy-coverage-reporter:
         runs-on: ubuntu-latest
         name: codacy-coverage-reporter
         steps:
@@ -40,7 +35,7 @@ jobs:
               project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
               coverage-reports: cobertura.xml
 
-      code_climate_coverage_reporter:
+      - name:  code_climate_coverage_reporter
         - uses: paambaati/codeclimate-action@v2.5.7
             env:
               CC_TEST_REPORTER_ID: ${{secrets.CC_TEST_REPORTER_ID}}
