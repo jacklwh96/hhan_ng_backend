@@ -15,7 +15,6 @@ import java.util.stream.Collectors;
 
 /**
  * Handler for requests to Lambda function.
- * hrfe i a comment
  */
 public class App implements RequestHandler<APIGatewayProxyRequestEvent, APIGatewayProxyResponseEvent> {
 
