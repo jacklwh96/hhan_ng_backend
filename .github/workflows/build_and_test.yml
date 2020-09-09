@@ -28,9 +28,3 @@ jobs:
       uses: codacy/codacy-coverage-reporter-action@master
       with:
         project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
-
-    - name: code climate
-      uses: paambaati/codeclimate-action@v2.6.0
-      env:
-        CC_TEST_REPORTER_ID: 945dfb58a832d233a3caeb84e3e6d3be212e8c7abcb48117fce63b9adcb43647
-
