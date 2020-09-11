@@ -38,4 +38,4 @@ jobs:
       with:
         # The report file must be there, otherwise Code Climate won't find it
         coverageCommand: mvn test --file ./HelloWorldFunction/pom.xml
-        coverageLocations: ${{github.workspace}}/HelloWorldFunction/target/my-reports/jacoco/jacoco.xml:jacoco
+        coverageLocations: ${{github.workspace}}/HelloWorldFunction/target/my-reports/jacoco.xml:jacoco
