@@ -1,4 +1,4 @@
-name: Maven Test with Codecov
+name: mvn test with code coverage
 
 on:
   push:
