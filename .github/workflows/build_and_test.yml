@@ -28,14 +28,3 @@ jobs:
       uses: codacy/codacy-coverage-reporter-action@master
       with:
         project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
-
-    - name: Code Climate Test & publish code coverage
-      uses: paambaati/codeclimate-action@v2.6.0
-      env:
-        # Set CC_TEST_REPORTER_ID as secret of your repo
-        CC_TEST_REPORTER_ID: ${{secrets.CC_TEST_REPORTER_ID}}
-        JACOCO_SOURCE_PATH: "${{github.workspace}}/HelloWorldFunction/src/main/java"
-      with:
-        # The report file must be there, otherwise Code Climate won't find it
-        coverageCommand: mvn test --file ./HelloWorldFunction/pom.xml
-        coverageLocations: ${{github.workspace}}/HelloWorldFunction/target/my-reports/jacoco.xml:jacoco
