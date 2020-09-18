@@ -1,4 +1,4 @@
-name: Maven Test with Codecov
+name: mvn test with code coverage
 
 on:
   push:
@@ -16,7 +16,9 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: 1.11
-    - name: mvn test
+    - name: mvn test first end point
+      run: mvn test --file ./HelloWorldFunction/pom.xml
+    - name: mvn test first end point
       run: mvn test --file ./HelloWorldFunction/pom.xml
 
     - name: Codecov
