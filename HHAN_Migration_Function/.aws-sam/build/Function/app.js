@@ -1,4 +1,3 @@
-"use strict";
 const CONFIG = require("./config.json");
 const AWS = require("aws-sdk");
 const CLIENT_ID = CONFIG.CLIENT_ID;
@@ -18,6 +17,7 @@ exports.handler = function (event, context, callback) {
     params,
     function (lookup_err, data) {
       // User does not exist in the User Pool, try to migrate
+
       if (lookup_err && lookup_err.code === "UserNotFoundException") {
         console.log(
           "User does not exist in User Pool, attempting migration: " +
@@ -51,7 +51,7 @@ exports.handler = function (event, context, callback) {
                 callback(null, {
                   headers: { "Access-Control-Allow-Origin": "*" },
                   statusCode: 500,
-                  body: "Failed to Create migrating user in User Pool.",
+                  body: "Failed to Create migrating user in User Pool: " + err,
                 });
                 return;
               } else {
@@ -126,7 +126,9 @@ exports.handler = function (event, context, callback) {
                             callback(null, {
                               headers: { "Access-Control-Allow-Origin": "*" },
                               statusCode: 200,
-                              body: "MIGRATED",
+                              body:
+                                user.username +
+                                " has been successfully migrated.",
                             });
                             // callback(null, "RETRY"); // Tell client to retry sign-in
                             return;
@@ -164,7 +166,7 @@ exports.handler = function (event, context, callback) {
         callback(null, {
           headers: { "Access-Control-Allow-Origin": "*" },
           statusCode: 200,
-          body: "NO_RETRY",
+          body: "User exists in User Pool so no migration:  NO_RETRY",
         });
         return;
       }
