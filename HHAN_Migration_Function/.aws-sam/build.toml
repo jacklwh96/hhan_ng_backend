@@ -2,7 +2,7 @@
 
 [function_build_definitions]
 [function_build_definitions.fded93f9-08ab-4be7-b98b-cbefe747464d]
-codeuri = "hhan_migration_function/"
+codeuri = "src/"
 runtime = "nodejs12.x"
 source_md5 = ""
 functions = ["HHANMigrationFunction"]
