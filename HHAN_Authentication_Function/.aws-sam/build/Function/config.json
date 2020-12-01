@@ -1,5 +1,8 @@
 {
   "region": "us-east-1",
   "CLIENT_ID": "79cbq30uthlc0nalt80t9g80i",
-  "USER_POOL_ID": "us-east-1_TzP4z3oCR"
+  "CLIENT_TESTID": "5h490elg8s0qhqru5cvkpkncs0",
+  "USER_POOL_ID": "us-east-1_TzP4z3oCR",
+  "USER_POOL_TESTID": "us-east-1_cxZDNthyT",
+  "HEADER": { "Access-Control-Allow-Origin": "*" }
 }
