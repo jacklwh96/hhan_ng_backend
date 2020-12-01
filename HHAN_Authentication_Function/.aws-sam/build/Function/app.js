@@ -38,6 +38,10 @@ exports.handler = (event, context, callback) => {
         isBase64Encoded: false,
       });
     } else {
+      const isadmin = data.UserAttributes.filter((item) => {
+        return item.Name === "custom:ISADMIN";
+      });
+
       cognitoUser.authenticateUser(authenticationDetails, {
         onSuccess: (result) => {
           const accessToken = result.getAccessToken().getJwtToken();
@@ -50,6 +54,7 @@ exports.handler = (event, context, callback) => {
               statusCode: 200,
               accessToken: accessToken,
               idToken: idToken,
+              isAdmin: isadmin[0].Value,
               error: "",
             }),
             isBase64Encoded: false,
