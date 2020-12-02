@@ -9,7 +9,8 @@ AWS.config.update({ region: CONFIG.region });
 
 exports.handler = (event, context, callback) => {
   const body = JSON.parse(event.body);
-
+  console.log(body.username);
+  console.log(body.password);
   const authenticationData = {
     Username: body.username,
     Password: body.password,
@@ -63,6 +64,7 @@ exports.handler = (event, context, callback) => {
         },
 
         onFailure: (err) => {
+          console.log(err);
           callback(null, {
             headers: HEADER,
             statusCode: 400,

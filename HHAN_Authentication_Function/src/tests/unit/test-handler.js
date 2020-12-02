@@ -1,43 +1,68 @@
 "use strict";
-
+const axios = require("axios");
 const app = require("../../app.js");
 const chai = require("chai");
+const chaiHttp = require("chai-http");
+const request = require("request-promise-native");
 const expect = chai.expect;
-var context, callback;
 
-const event = {
-  username: "wllau",
-  password: "A342BD144D5EAFBCC3D8E66E00BF3A5F78AB4FE9",
+const BASE_URL =
+  "https://a8y4erydnd.execute-api.us-east-1.amazonaws.com/default/HHAN_Authentication_Function";
+
+const wrongParams = {
+  username: "migrationtest",
+  password: "F988C245B3C789A608B34CD1B7C1B612542DBD0",
 };
 
-describe("Tests Authentication success", () => {
-  it("verifies successful response", async () => {
-    const result = await app.handler(event, context, callback);
+const correctParams = {
+  username: "migrationtest",
+  password: "F988C245B3C789A608B34CD1B7C1B612542DBD09",
+};
 
-    expect(result).to.be.an("object");
-    expect(result.statusCode).to.equal(200);
-    expect(result.body).to.be.an("string");
+const wrongPostOptions = {
+  method: "POST",
+  uri: BASE_URL,
+  form: JSON.stringify(wrongParams),
+};
 
-    let response = JSON.parse(result.body);
+const correctPostOptions = {
+  method: "POST",
+  uri: BASE_URL,
+  form: JSON.stringify(correctParams),
+};
 
-    expect(response).to.be.an("object");
-    // expect(response.message).to.be.equal("hello world");
-    // expect(response.location).to.be.an("string");
-  });
+// testing for a particular error
+it("Testing with Wrong Credentials, should expect 400 error", async () => {
+  let error;
+  try {
+    await request(wrongPostOptions);
+  } catch (err) {
+    error = err;
+  }
+  expect(error.statusCode).to.equal(400);
+  expect(error.name).to.equal("StatusCodeError");
 });
 
-describe("Tests Authentication fail", () => {
-  it("verifies successful response", async () => {
-    const result = await app.handler(event, context, callback);
+it("Testing with correct Credentials, should expect 200 code", async () => {
+  let res;
+  let error;
+  try {
+    const response = await request(correctPostOptions);
+    res = JSON.parse(response);
+  } catch (err) {
+    error = err;
+  }
+  expect(res.statusCode).to.equal(200);
+  expect(res.error).to.equal("");
+});
 
-    expect(result).to.be.an("object");
-    expect(result.statusCode).to.equal(200);
-    expect(result.body).to.be.an("string");
-
-    let response = JSON.parse(result.body);
-
-    expect(response).to.be.an("object");
-    // expect(response.message).to.be.equal("hello world");
-    // expect(response.location).to.be.an("string");
-  });
+it("Testing with failed Credentials, should expect 502 error", async () => {
+  let error;
+  try {
+    await request(BASE_URL);
+  } catch (err) {
+    error = err;
+  }
+  expect(error.statusCode).to.equal(502);
+  expect(error.name).to.equal("StatusCodeError");
 });
