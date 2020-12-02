@@ -72,7 +72,6 @@ exports.handler = (event, context, callback) => {
         },
         (err, data) => {
           if (err) {
-            console.log(err);
             callback(null, {
               headers: HEADER,
               statusCode: 500,
