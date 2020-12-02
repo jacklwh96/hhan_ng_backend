@@ -1,4 +1,3 @@
-"use strict";
 const axios = require("axios");
 const app = require("../../app.js");
 const chai = require("chai");
