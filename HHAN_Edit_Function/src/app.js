@@ -73,7 +73,6 @@ exports.handler = (event, context, callback) => {
             { Name: "custom:XLS_UPLOAD_PRIV", Value: user.xlsuploadpriv },
             { Name: "custom:USERNAME", Value: user.username },
             { Name: "custom:PASSWORD", Value: user.password },
-            // { Name: "email_verified", Value: "true" },
           ],
           UserPoolId: USER_POOL_ID,
           Username: user.username,
