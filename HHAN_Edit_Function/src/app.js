@@ -5,6 +5,14 @@ const USER_POOL_ID = CONFIG.USER_POOL_TESTID;
 const cognitoidentityserviceprovider = new AWS.CognitoIdentityServiceProvider();
 AWS.config.update({ region: CONFIG.region });
 
+//Edit function calls Cognito API to delete/update exisiting user
+//requires an access toekn to modify users
+/**
+ *
+ * @param {*} event //store JSON params in POST request
+ * @param {*} context
+ * @param {*} callback //return JSON body as response using callback function
+ */
 exports.handler = (event, context, callback) => {
   const body = JSON.parse(event.body);
   const type = body.type;

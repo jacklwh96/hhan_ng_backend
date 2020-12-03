@@ -7,6 +7,14 @@ const USER_POOL_ID = CONFIG.USER_POOL_TESTID;
 const HEADER = CONFIG.HEADER;
 AWS.config.update({ region: CONFIG.region });
 
+//Authentication function looks up the Cognito User pool and
+//call Cognito API to verify user info.
+/**
+ *
+ * @param {*} event //store JSON body in POST request
+ * @param {*} context
+ * @param {*} callback //return JSON file using Callback
+ */
 exports.handler = (event, context, callback) => {
   const body = JSON.parse(event.body);
 

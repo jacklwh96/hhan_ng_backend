@@ -5,6 +5,15 @@ const USER_POOL_ID = CONFIG.USER_POOL_TESTID;
 const HEADER = CONFIG.HEADER;
 const cognitoidentityserviceprovider = new AWS.CognitoIdentityServiceProvider();
 AWS.config.update({ region: CONFIG.region });
+
+//Migration function receives user attributes and create an user
+//with given attributes in Cognito userpool.
+/**
+ *
+ * @param {*} event //store JSON params in POST request
+ * @param {*} context
+ * @param {*} callback //return JSON body as response using callback function
+ */
 exports.handler = (event, context, callback) => {
   const body = JSON.parse(event.body);
   const user = body.user;
