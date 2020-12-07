@@ -14,8 +14,8 @@ const wrongParams = {
 };
 
 const correctParams = {
-  username: "migrationtest",
-  password: "F988C245B3C789A608B34CD1B7C1B612542DBD09",
+  username: "temptest",
+  password: "30493F3845E4C10629BB023487829BA382C5CA24",
 };
 
 const wrongPostOptions = {
